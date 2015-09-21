@@ -1,5 +1,5 @@
 var reportToGithub = require('./lib/handler')
-  , debug = require('debug')('strider-github-status')
+  , debug = require('debug')('strider-github-reporter')
   , path = require('path')
   , fs = require('fs');
 
