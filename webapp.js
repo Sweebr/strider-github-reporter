@@ -19,15 +19,13 @@ function jobReport(config, job) {
 
 module.exports = {
   config: {
-    ghReporter: {
-      runnerLog: {
-        type: String,
-        default: 'unit-test-runner.log'
-      },
-      errorLog: {
-        type: String,
-        default: 'unit-test-errors.log'
-      }
+    runnerLog: {
+      type: String,
+      default: 'unit-test-runner.log'
+    },
+    errorLog: {
+      type: String,
+      default: 'unit-test-errors.log'
     }
   },
   // global events

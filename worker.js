@@ -25,11 +25,12 @@ module.exports = {
     return callback(null, {
       listen: function (emitter) {
         debug('listening')
-				debug('prdata', job.plugin_data.github);
+				debug('prdata', job.plugin_data.github.pull_request);
         var github_repo_data = {
           user: job.project.provider.config.owner,
           repo: job.project.provider.config.repo,
-          sha: job.plugin_data.github.pull_request.sha
+          sha: job.plugin_data.github.pull_request.sha,
+          number: job.plugin_data.github.pull_request.number
         }
         emitter.once('job.status.tested', function (jobId) {
           debug('reporting status', jobId)
