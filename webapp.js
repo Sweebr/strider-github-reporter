@@ -10,10 +10,11 @@ var
 ;
 
 function jobReport(context, job) {
+  debug('job', job);
     var slug = job.project.name.replace('/', '-');
     var projectFolder = [slug, job._id].join('-');
     var PROJECT_FOLDER = path.resolve([ STRIDER_DATA_FOLDER, projectFolder ].join('/'));
-    var errorsLogPath = path.resolve(PROJECT_FOLDER, context.config.ghReporter.errorLog);
+    var errorsLogPath = path.resolve(PROJECT_FOLDER, job.ghReporter.errorLog);
 
     if (job.errored || job.test_exitcode !== 0)
         return fs.readFileSync(errorsLogPath, 'utf-8');
