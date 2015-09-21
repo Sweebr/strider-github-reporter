@@ -6,10 +6,12 @@ var fs = require('fs');
 var STRIDER_DATA_FOLDER = process.env.STRIDER_DATA_FOLDER || '/home/strider/.strider/data';
 
 function jobReport(config, job) {
+    debug('config....', config);
     var slug = job.project.name.replace('/', '-');
     var projectFolder = [slug, job._id].join('-');
     var PROJECT_FOLDER = path.resolve([ STRIDER_DATA_FOLDER, projectFolder ].join('/'));
-    var errorsLogPath = path.resolve(PROJECT_FOLDER, config.errorLog);
+    // var errorsLogPath = path.resolve(PROJECT_FOLDER, config.errorLog);
+    var errorsLogPath = path.resolve(PROJECT_FOLDER, 'unit-test-errors.log');
 
     if (job.errored || job.test_exitcode !== 0)
         return fs.readFileSync(errorsLogPath, 'utf-8');
