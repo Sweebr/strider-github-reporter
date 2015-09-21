@@ -10,7 +10,9 @@ var
 ;
 
 function jobReport(context, job) {
-  debug('job', job);
+    debug('job', Object.keys(job));
+    debug('job', Object.keys(job.ghReporter));
+    debug('job', Object.keys(job.project));
     var slug = job.project.name.replace('/', '-');
     var projectFolder = [slug, job._id].join('-');
     var PROJECT_FOLDER = path.resolve([ STRIDER_DATA_FOLDER, projectFolder ].join('/'));
