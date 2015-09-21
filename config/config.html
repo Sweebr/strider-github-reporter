@@ -1,0 +1,24 @@
+<div id="template" class="well">
+  <h2>Github Reporter Config</h2>
+  <button ng-click="save()" class="btn btn-primary">Save</button><br/><br/>
+
+  <p class="help-text">
+    Here you can set a different filename for your reports.
+  </p>
+
+  <h3>Runner log</h3>
+  <div class="row-fluid">
+    <div class="span12">
+      <textarea ui-refresh="selectedTab" ng-model="config.runnerLog"></textarea>
+    </div>
+  </div><br/>
+
+  <h3>Error log</h3>
+  <div class="row-fluid">
+    <div class="span12">
+      <textarea ui-refresh="selectedTab" ng-model="config.errorLog"></textarea>
+    </div>
+  </div><br/>
+
+  <button ng-click="save()" class="btn btn-primary">Save</button>
+</div>

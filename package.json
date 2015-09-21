@@ -1,0 +1,40 @@
+{
+  "name": "strider-github-reporter",
+  "version": "1.0.1",
+  "description": "Report more than success or failure.",
+  "main": "webapp.js",
+  "scripts": {
+    "test": "mocha -R spec --recursive test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pixeleet/strider-github-reporter.git"
+  },
+  "keywords": [
+    "strider",
+    "plugin",
+    "template"
+  ],
+  "author": "David Lonyai",
+  "license": "MIT",
+  "dependencies": {
+    "debug": "~0.7.4",
+    "github": "~0.1.12"
+  },
+  "strider": {
+    "type": "job",
+    "id": "strider-github-reporter",
+    "title": "Strider Github Reporter",
+    "worker": "worker.js",
+    "webapp": "webapp.js",
+    "icon": "icon.png",
+    "config": {
+      "controller": "GithubReportController"
+    }
+  },
+  "devDependencies": {
+    "chai": "^1.9.1",
+    "mocha": "^1.20.1",
+    "sinon-chai": "^2.5.0"
+  }
+}
