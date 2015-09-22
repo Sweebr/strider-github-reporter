@@ -7,11 +7,12 @@ var STRIDER_DATA_FOLDER = process.env.STRIDER_DATA_FOLDER || '/home/strider/.str
 
 function jobReport(config, job) {
     debug('config....', config);
+    config = config || {};
     var slug = job.project.name.replace('/', '-');
     var projectFolder = [slug, job._id].join('-');
     var PROJECT_FOLDER = path.resolve([ STRIDER_DATA_FOLDER, projectFolder ].join('/'));
-    // var errorsLogPath = path.resolve(PROJECT_FOLDER, config.errorLog);
-    var errorsLogPath = path.resolve(PROJECT_FOLDER, 'unit-test-errors.log');
+    var ERROR_LOG = config.errorLog || 'unit-test-errors.log';
+    var errorsLogPath = path.resolve(PROJECT_FOLDER, ERROR_LOG);
 
     if (job.errored || job.test_exitcode !== 0)
         return fs.readFileSync(errorsLogPath, 'utf-8');
@@ -21,13 +22,15 @@ function jobReport(config, job) {
 
 module.exports = {
   config: {
-    runnerLog: {
-      type: String,
-      default: 'unit-test-runner.log'
-    },
-    errorLog: {
-      type: String,
-      default: 'unit-test-errors.log'
+    ghReporter: {
+      runnerLog: {
+        type: String,
+        default: 'unit-test-runner.log'
+      },
+      errorLog: {
+        type: String,
+        default: 'unit-test-errors.log'
+      }
     }
   },
   // global events
